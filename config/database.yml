@@ -1,0 +1,10 @@
+# mysql database config
+development:
+  adapter: mysql2
+  encoding: utf8
+  database: pda_development
+  pool: 5
+  username: root
+  password: '1234'
+  timeout: 5000
+  socket: /var/run/mysqld/mysqld.sock
