@@ -93,11 +93,6 @@ ActiveRecord::Schema.define(version: 0) do
   add_index "dept_manager", ["dept_no"], name: "dept_no", using: :btree
   add_index "dept_manager", ["emp_no"], name: "emp_no", using: :btree
 
-  create_table "emp_man", id: false, force: :cascade do |t|
-    t.string "emp_name", limit: 14, null: false
-    t.string "man_name", limit: 14, null: false
-  end
-
   create_table "employees", primary_key: "emp_no", force: :cascade do |t|
     t.date   "birth_date",            null: false
     t.string "first_name", limit: 14, null: false
@@ -106,11 +101,8 @@ ActiveRecord::Schema.define(version: 0) do
     t.date   "hire_date",             null: false
   end
 
-  add_index "employees", ["birth_date"], name: "yearindex", using: :btree
-
-  create_table "engineers", id: false, force: :cascade do |t|
-    t.integer "emp_no", limit: 4,  null: false
-    t.string  "title",  limit: 50, null: false
+  create_table "prices_without_symbol", id: false, force: :cascade do |t|
+    t.float "Price", limit: 53
   end
 
   create_table "salaries", id: false, force: :cascade do |t|
@@ -131,14 +123,6 @@ ActiveRecord::Schema.define(version: 0) do
 
   add_index "titles", ["emp_no"], name: "emp_no", using: :btree
 
-  add_foreign_key "Attractions", "Parks", column: "Park_number", primary_key: "Number", name: "Attractions_ibfk_1"
-  add_foreign_key "Attractions_Sell", "Attractions", column: "Attraction_number", primary_key: "Number", name: "Attractions_Sell_ibfk_1"
-  add_foreign_key "Attractions_Sell", "Transactions", column: "Transaction_number", primary_key: "Number", name: "Attractions_Sell_ibfk_2"
-  add_foreign_key "Parks_Sell", "Parks", column: "Park_number", primary_key: "Number", name: "Parks_Sell_ibfk_1"
-  add_foreign_key "Parks_Sell", "Transactions", column: "Transaction_number", primary_key: "Number", name: "Parks_Sell_ibfk_2"
-  add_foreign_key "Reviews", "Attractions", column: "Attraction_number", primary_key: "Number", name: "Reviews_ibfk_2"
-  add_foreign_key "Reviews", "Visitors", primary_key: "ID", name: "Reviews_ibfk_1"
-  add_foreign_key "Transactions", "Visitors", primary_key: "ID", name: "Transactions_ibfk_1"
   add_foreign_key "dept_emp", "departments", column: "dept_no", primary_key: "dept_no", name: "dept_emp_ibfk_2", on_delete: :cascade
   add_foreign_key "dept_emp", "employees", column: "emp_no", primary_key: "emp_no", name: "dept_emp_ibfk_1", on_delete: :cascade
   add_foreign_key "dept_manager", "departments", column: "dept_no", primary_key: "dept_no", name: "dept_manager_ibfk_2", on_delete: :cascade
