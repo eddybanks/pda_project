@@ -39,7 +39,7 @@ class ParksController < ApplicationController
   end
 
   def delete
-    @group = Park.find(params[:id])
+    @park = Park.find(params[:id])
   end
 
   def destroy
@@ -48,24 +48,10 @@ class ParksController < ApplicationController
     redirect_to(:action => 'index')
   end
 
-  def c_parks_users
-    park = Park.find(params[:id])
-    if park.users.include? current_user
-      flash[:notice] = "You already joined the park!"
-      redirect_to(:action => 'index')
-    else
-      park.users << current_user
-      park.save
-      flash[:notice] = "You successfully joined the park!"
-      redirect_to(:action => 'show', :id => park.id)
-    end
-  end
-
   private
 
     def park_params
       params.require(:park).permit(:id, :name, :size, :address)
     end
-
 
 end

@@ -1,2 +1,26 @@
-<h1>Attractions#edit</h1>
-<p>Find me in app/views/attractions/edit.html.erb</p>
+<section>
+  <%= form_for :attraction, { action: 'update', id: @attraction.id }  do |f| %>
+
+    <div class="form-group">
+      <label for="name">Name</label>
+      <%= f.text_field(:name, class: 'form-control') %>
+    </div>
+    <div class="form-group">
+      <label for="size">Size</label>
+      <%= f.text_field(:size, class: 'form-control') %>
+    </div>
+    <div class="form-group">
+      <label for="type">Type</label>
+      <%= f.text_field(:category, class: 'form-control') %>
+    </div>
+    <div class="form-group">
+      <label for="park_number">Park Number</label>
+      <%= f.text_field(:park_number, class: 'form-control') %>
+    </div>
+    <div class="form-buttons">
+      <%= submit_tag("Update", class: 'btn btn-primary') %>
+      <%= link_to("Back to Attractions", { :action => 'index'}, :class => 'back-link btn btn-primary') %>
+    </div>
+
+  <% end %>
+</section>
