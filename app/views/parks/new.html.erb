@@ -1,5 +1,5 @@
 <section>
-  <%= form_for :park, { action: 'update', id: @park.id}  do |f| %>
+  <%= form_for :park, { action: 'create' }  do |f| %>
 
     <div class="form-group">
       <label for="name">Name</label>
@@ -14,7 +14,7 @@
       <%= f.text_field(:address, class: 'form-control') %>
     </div>
     <div class="form-buttons">
-      <%= submit_tag("Update", class: 'btn btn-primary') %>
+      <%= submit_tag("Add", class: 'btn btn-primary') %>
       <%= link_to("Back to Parks", { :action => 'index'}, :class => 'back-link btn btn-primary') %>
     </div>
 

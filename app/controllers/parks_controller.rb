@@ -24,7 +24,7 @@ class ParksController < ApplicationController
   end
 
   def edit
-    @park = Park.find(params[:id])
+    @park = Park.find_by_id(params[:id])
   end
 
   def update
@@ -64,7 +64,7 @@ class ParksController < ApplicationController
   private
 
     def park_params
-      params.require(:park).permit(:number, :name, :size, :address)
+      params.require(:park).permit(:id, :name, :size, :address)
     end
 
 
