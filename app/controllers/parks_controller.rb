@@ -5,7 +5,7 @@ class ParksController < ApplicationController
   end
 
   def show
-    @park = Park.find(params[:id])
+    @park = Park.find_by_id(params[:id])
   end
 
   def new
@@ -28,7 +28,7 @@ class ParksController < ApplicationController
   end
 
   def update
-    @park = Park.find(params[:id])
+    @park = Park.find_by_id(params[:id])
 
     if @park.update_attributes(park_params)
       flash[:notice] = "Park updated successfully!"
@@ -39,11 +39,11 @@ class ParksController < ApplicationController
   end
 
   def delete
-    @park = Park.find(params[:id])
+    @park = Park.find_by_id(params[:id])
   end
 
   def destroy
-    park = Park.find(params[:id]).destroy
+    park = Park.find_by_id(params[:id]).destroy
     flash[:notice] = "The park '#{park.name}' was deleted successfully!"
     redirect_to(:action => 'index')
   end

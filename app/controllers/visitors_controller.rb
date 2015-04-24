@@ -4,7 +4,7 @@ class VisitorsController < ApplicationController
   end
 
   def show
-    @visitor = Visitor.find(params[:id])
+    @visitor = Visitor.find_by_id(params[:id])
   end
 
   def new
@@ -27,7 +27,7 @@ class VisitorsController < ApplicationController
   end
 
   def update
-    @visitor = Visitor.find(params[:id])
+    @visitor = Visitor.find_by_id(params[:id])
 
     if @visitor.update_attributes(visitor_params)
       flash[:notice] = "Visitor updated successfully!"
@@ -38,11 +38,11 @@ class VisitorsController < ApplicationController
   end
 
   def delete
-    @visitor = Visitor.find(params[:id])
+    @visitor = Visitor.find_by_id(params[:id])
   end
 
   def destroy
-    visitor = Visitor.find(params[:id]).destroy
+    visitor = Visitor.find_by_id(params[:id]).destroy
     flash[:notice] = "The visitor with visitor ID '#{visitor.id}' was deleted successfully!"
     redirect_to(:action => 'index')
   end

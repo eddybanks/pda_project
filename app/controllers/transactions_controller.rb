@@ -5,7 +5,7 @@ class TransactionsController < ApplicationController
   end
 
   def show
-    @transaction = Transaction.find(params[:id])
+    @transaction = Transaction.find_by_id(params[:id])
   end
 
   def new
@@ -28,7 +28,7 @@ class TransactionsController < ApplicationController
   end
 
   def update
-    @transaction = Transaction.find(params[:id])
+    @transaction = Transaction.find_by_id(params[:id])
 
     if @transaction.update_attributes(transaction_params)
       flash[:notice] = "Transaction updated successfully!"
@@ -39,11 +39,11 @@ class TransactionsController < ApplicationController
   end
 
   def delete
-    @transaction = Transaction.find(params[:id])
+    @transaction = Transaction.find_by_id(params[:id])
   end
 
   def destroy
-    transaction = Transaction.find(params[:id]).destroy
+    transaction = Transaction.find_by_id(params[:id]).destroy
     flash[:notice] = "The transaction '#{transaction.name}' was deleted successfully!"
     redirect_to(:action => 'index')
   end

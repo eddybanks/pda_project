@@ -39,7 +39,15 @@ class AttractionsController < ApplicationController
   end
 
   def delete
+    @attraction = Attraction.find_by_id(params[:id])
   end
+
+  def destroy
+    attraction = Attraction.find_by_id(params[:id]).destroy
+    flash[:notice] = "The attraction '#{attraction.name}' was deleted successfully!"
+    redirect_to(:action => 'index')
+  end
+
 
   private
 

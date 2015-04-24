@@ -5,7 +5,7 @@ class ReviewsController < ApplicationController
   end
 
   def show
-    @review = Review.find(params[:id])
+    @review = Review.find_by_id(params[:id])
   end
 
   def new
@@ -28,7 +28,7 @@ class ReviewsController < ApplicationController
   end
 
   def update
-    @review = Review.find(params[:id])
+    @review = Review.find_by_id(params[:id])
 
     if @review.update_attributes(review_params)
       flash[:notice] = "Review updated successfully!"
@@ -39,11 +39,11 @@ class ReviewsController < ApplicationController
   end
 
   def delete
-    @review = Review.find(params[:id])
+    @review = Review.find_by_id(params[:id])
   end
 
   def destroy
-    review = Review.find(params[:id]).destroy
+    review = Review.find_by_id(params[:id]).destroy
     flash[:notice] = "The review with review number '#{review.id}' was deleted successfully!"
     redirect_to(:action => 'index')
   end
