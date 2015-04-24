@@ -1,7 +1,7 @@
 class ParksController < ApplicationController
 
   def index
-    @parks = Park.all
+    @parks = Park.all.paginate(:per_page => 8, :page => params[:page])
   end
 
   def show

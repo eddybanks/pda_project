@@ -2,9 +2,9 @@
 <div class="panel-body">
   <div class="row">
     <div class="col-md-12">
+      <%= render 'layouts/search' %>
       <h2><%= link_to 'Add Column', new_review_path, class: "btn btn-primary" %></h2>
-      <h2><a class="btn btn-primary" data-toggle="collapse" href="#reviewstable" aria-expanded="false" aria-controls="reviewstable">View Table</a></h2>
-      <div id="reviewstable" class="table-responsive collapse">
+      <div id="reviewstable" class="table-responsive">
 
         <table class="table table-striped" data-toggle="table" data-cache="false" data-height="400" data-pagination="true" data-search="true">
 
@@ -39,16 +39,7 @@
 
         </table>
 
-        <div class="clearfix"></div>
-        <ul class="pagination pull-right">
-          <li class="disabled"><a href="#"><span class="glyphicon glyphicon-chevron-left"></span></a></li>
-          <li class="active"><a href="#">1</a></li>
-          <li><a href="#">2</a></li>
-          <li><a href="#">3</a></li>
-          <li><a href="#">4</a></li>
-          <li><a href="#">5</a></li>
-          <li><a href="#"><span class="glyphicon glyphicon-chevron-right"></span></a></li>
-        </ul>
+        <%= will_paginate @attractions %>
 
       </div>
     </div>

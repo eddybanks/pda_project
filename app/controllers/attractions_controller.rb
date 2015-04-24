@@ -1,7 +1,7 @@
 class AttractionsController < ApplicationController
-  
+
   def index
-    @attractions = Attraction.all
+    @attractions = Attraction.all.paginate(:per_page => 8, :page => params[:page])
   end
 
   def show

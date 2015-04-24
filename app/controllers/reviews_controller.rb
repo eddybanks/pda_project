@@ -1,7 +1,7 @@
 class ReviewsController < ApplicationController
 
   def index
-    @reviews = Review.all
+    @reviews = Review.all.paginate(:per_page => 3, :page => params[:page])
   end
 
   def show
