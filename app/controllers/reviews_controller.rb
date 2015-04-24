@@ -29,7 +29,6 @@ class ReviewsController < ApplicationController
 
   def update
     @review = Review.find_by_id(params[:id])
-
     if @review.update_attributes(review_params)
       flash[:notice] = "Review updated successfully!"
       redirect_to(:action => 'index')
@@ -51,7 +50,7 @@ class ReviewsController < ApplicationController
   private
 
     def review_params
-      params.require(:review).permit(:id, :name, :size, :address)
+      params.require(:review).permit(:id, :name, :comment, :rating, :visitor_id, :attraction_number)
     end
 
 end
