@@ -1,2 +1,7 @@
-<h1>Reviews#show</h1>
-<p>Find me in app/views/reviews/show.html.erb</p>
+<% @header = "Review #{@review.id}" %>
+<div class="lead">
+  <p>Comment: <%= @review.comment %></p>
+  <p>Rating: <%= @review.rating %></p>
+  <p>Visitor ID: <%= @review.visitor_id %></p>
+  <p>Attraction Number: <%= @review.attraction_number %></p>
+</div>

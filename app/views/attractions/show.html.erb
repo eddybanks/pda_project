@@ -1,2 +1,6 @@
-<h1>Attractions#show</h1>
-<p>Find me in app/views/attractions/show.html.erb</p>
+<% @header = @attraction.name %>
+<div class="lead">
+  <p>Size: <%= @attraction.size %></p>
+  <p>Type: <%= @attraction.category %></p>
+  <p>Park Number: <%= @attraction.park_number %></p>
+</div>

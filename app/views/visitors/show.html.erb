@@ -1,2 +1,5 @@
-<h1>Visitors#show</h1>
-<p>Find me in app/views/visitors/show.html.erb</p>
+<% @header = @visitor.name %>
+<div class="lead">
+  <p>Gender: <%= @visitor.gender %></p>
+  <p>Birthday: <%= @visitor.birthday.to_date.to_s(:long_ordinal) %></p>
+</div>
