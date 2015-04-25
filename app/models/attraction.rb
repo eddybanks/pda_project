@@ -1,7 +1,7 @@
 class Attraction < ActiveRecord::Base
 
 	belongs_to :park
-	has_many :reviews
+	has_many :reviews, :dependent => :destroy
 	has_and_belongs_to_many :tickets, join_table: :attractions_sell
 
   self.per_page = 10

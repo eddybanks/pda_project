@@ -1,7 +1,7 @@
 class Visitor < ActiveRecord::Base
 
-	has_many :tickets
-	has_many :reviews
+	has_many :tickets, :dependent => :delete_all
+	has_many :reviews, :dependent => :delete_all
 
   self.table_name = "Visitors"
   self.primary_key = "ID"
