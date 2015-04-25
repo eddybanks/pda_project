@@ -7,7 +7,7 @@ Rails.application.routes.draw do
 
   resources :reviews
   resources :attractions
-  resources :transactions
+  resources :tickets
   resources :visitors
   resources :parks
 

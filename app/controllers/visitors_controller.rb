@@ -14,6 +14,11 @@ class VisitorsController < ApplicationController
   def create
     @visitor = Visitor.new(visitor_params)
 
+    # To replace date_select (i1,i2, ..) values to Date
+    visitor = params[:visitor]
+    birthday = Date.new visitor["birthday(1i)"].to_i, visitor["birthday(2i)"].to_i, visitor["birthday(3i)"].to_i
+    @visitor.birthday = birthday
+
     if @visitor.save
       flash[:notice] = "Visitor created successfully!"
       redirect_to(:action => 'index')
@@ -28,6 +33,14 @@ class VisitorsController < ApplicationController
 
   def update
     @visitor = Visitor.find_by_id(params[:id])
+
+    # To replace date_select (i1,i2, ..) values to Date
+    visitor = params[:visitor]
+    birthday = Date.new visitor["birthday(1i)"].to_i, visitor["birthday(2i)"].to_i, visitor["birthday(3i)"].to_i
+    visitor.delete("birthday(1i)")
+    visitor.delete("birthday(2i)")
+    visitor.delete("birthday(3i)")
+    visitor[:birthday] = birthday
 
     if @visitor.update_attributes(visitor_params)
       flash[:notice] = "Visitor updated successfully!"

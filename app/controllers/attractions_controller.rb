@@ -52,7 +52,7 @@ class AttractionsController < ApplicationController
   private
 
     def attraction_params
-      params.require(:attraction).permit(:id, :name, :size, :category, :park_number)
+      params.require(:attraction).permit(:id, :name, :size, :category, :park_number, :transaction_number)
     end
 
 

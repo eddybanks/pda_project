@@ -1,8 +1,8 @@
-class Transaction < ActiveRecord::Base
+class Ticket < ActiveRecord::Base
 
-	# belongs_to :visitor
-	# has_and_belongs_to_many :parks, join_table: :parks_sell
-	# has_and_belongs_to_many :attractions, join_table: :attractions_sell
+	belongs_to :visitor
+	has_and_belongs_to_many :parks, join_table: :parks_sell
+	has_and_belongs_to_many :attractions, join_table: :attractions_sell
 
   self.table_name = "Transactions"
   self.primary_key = "Number"

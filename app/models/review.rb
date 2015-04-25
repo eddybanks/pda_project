@@ -1,7 +1,7 @@
 class Review < ActiveRecord::Base
 
-	# belongs_to :attraction
-	# belongs_to :visitor
+	belongs_to :attraction
+	belongs_to :visitor
 
   self.table_name = :Reviews
   self.primary_key = :Number
