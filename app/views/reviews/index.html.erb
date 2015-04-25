@@ -9,13 +9,12 @@
         <table class="table table-striped" data-toggle="table" data-cache="false" data-height="400" data-pagination="true" data-search="true">
 
           <thead>
-
-            <th><input type="checkbox" class="checkall" /></th>
             <th>Number</th>
             <th>Comment</th>
             <th>Rating</th>
             <th>Visitor Name</th>
             <th>Attraction Name - Park Name</th>
+            <th colspan='3'>Actions</th>
           </thead>
 
           <tbody>
@@ -25,7 +24,6 @@
             <% @attraction = Attraction.find_by id: review.attraction_number %>
             <% @park = Park.find_by id: @attraction.park_number %>
             <tr>
-              <td><input type="checkbox" class="checkthis" /></td>
               <td><%= review.id %></td>
               <td><%= review.comment %></td>
               <td><%= review.rating %></td>

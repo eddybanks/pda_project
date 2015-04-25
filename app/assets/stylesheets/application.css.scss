@@ -13,7 +13,7 @@
  a,
  a:focus,
  a:hover {
-   color: #fff;
+   color: #333;
  }
 
  /* Custom default button */
@@ -35,16 +35,15 @@
  html,
  body {
  /*css for full size background image*/
-   background: rgba(0,0,0,0.3);
+   background: rgba(220,220,220,0.8);
    -webkit-background-size: cover;
    -moz-background-size: cover;
    -o-background-size: cover;
    background-size: cover;
 
    height: 100%;
-   color: #fff;
+   color: #000;
    text-align: center;
-   text-shadow: 0 1px 3px rgba(0,0,0,.5);
 
  }
 
@@ -64,6 +63,11 @@
    margin-left: auto;
  }
 
+ .table{
+   & th{
+     text-align: center;
+   }
+ }
  /* Padding for spacing */
  .inner {
    padding: 30px;
@@ -94,8 +98,8 @@
    padding-left: 0;
    font-size: 16px;
    font-weight: bold;
-   color: #fff; /* IE8 proofing */
-   color: rgba(255,255,255,.95);
+   color: #00f; /* IE8 proofing */
+   color: rgba(30,30,130,.95);
    border-bottom: 2px solid transparent;
  }
  .masthead-nav > li > a:hover,
@@ -107,7 +111,7 @@
  .masthead-nav > .active > a,
  .masthead-nav > .active > a:hover,
  .masthead-nav > .active > a:focus {
-   color: #fff;
+   color: #00f;
    border-bottom-color: #fff;
  }
 
@@ -137,7 +141,7 @@
 
  .mastfoot {
    color: #999; /* IE8 proofing */
-   color: rgba(255,255,255,.5);
+   color: rgba(0,0,100,.8);
  }
 
 
@@ -171,7 +175,7 @@
    .masthead,
    .mastfoot,
    .cover-container {
-     width: 700px;
+     width: 70%;
    }
  }
 
@@ -216,11 +220,4 @@
      .dropdown.dropdown-lg .dropdown-menu {
          min-width: 500px;
      }
- }
-
-/*pagination */
-
- .paginate a{
-   color: red;
-   padding: 20px;
  }

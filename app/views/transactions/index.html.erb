@@ -9,8 +9,6 @@
         <table class="table table-striped">
 
           <thead>
-
-            <th><input type="checkbox" class="checkall" /></th>
             <th>Number</th>
             <th>Date</th>
             <th>Type</th>
@@ -24,7 +22,6 @@
             <% @transactions.each do |transaction| %>
             <% @visitor = Visitor.find_by id: transaction.visitor_id %>
             <tr>
-              <td><input type="checkbox" class="checkthis" /></td>
               <td><%= transaction.id %></td>
               <td><%= transaction.date.strftime("%B %d, %Y") %></td>
               <td><%= transaction.type %></td>

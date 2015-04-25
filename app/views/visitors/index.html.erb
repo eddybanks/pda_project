@@ -9,8 +9,6 @@
         <table class="table table-striped">
 
           <thead>
-
-            <th><input type="checkbox" class="checkall" /></th>
             <th>Visitor ID</th>
             <th>Name</th>
             <th>Gender</th>
@@ -22,7 +20,6 @@
 
             <% @visitors.each do |visitor| %>
             <tr>
-              <td><input type="checkbox" class="checkthis" /></td>
               <td><%= visitor.id %></td>
               <td><%= visitor.name %></td>
               <td><%= visitor.gender %></td>
