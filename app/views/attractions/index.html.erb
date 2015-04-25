@@ -9,8 +9,6 @@
         <table class="table table-striped">
 
           <thead>
-
-            <th><input type="checkbox" class="checkall" /></th>
             <th>Number</th>
             <th>Name</th>
             <th>Size</th>
@@ -24,7 +22,6 @@
             <% @attractions.each do |attraction| %>
             <% @park = Park.find_by id: attraction.park_number %>
             <tr>
-              <td><input type="checkbox" class="checkthis" /></td>
               <td><%= attraction.id %></td>
               <td><%= attraction.name %></td>
               <td><%= attraction.size %></td>

@@ -6,22 +6,20 @@
       <h2><%= link_to 'Add New Tuple', new_park_path, class: "btn btn-primary" %></h2>
       <div id="parktable" class="table-responsive">
 
-        <table class="table table-striped" data-toggle="table" data-cache="false" data-height="299">
+        <table class="table table-striped">
 
           <thead>
-
-            <th><input type="checkbox" class="checkall" /></th>
             <th>Number</th>
             <th>Name</th>
             <th>Size</th>
             <th>Address</th>
+            <th colspan='3'>Actions</th>
           </thead>
 
           <tbody>
 
             <% @parks.each do |park| %>
             <tr>
-              <td><input type="checkbox" class="checkthis" /></td>
               <td><%= park.id %></td>
               <td><%= park.name %></td>
               <td><%= park.size %></td>
