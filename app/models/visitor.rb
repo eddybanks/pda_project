@@ -1,7 +1,7 @@
 class Visitor < ActiveRecord::Base
 
-	# has_many :transactions
-	# has_many :reviews
+	has_many :tickets
+	has_many :reviews
 
   self.table_name = "Visitors"
   self.primary_key = "ID"

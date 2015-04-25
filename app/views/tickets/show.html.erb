@@ -1,0 +1,7 @@
+<% @header = "Transaction #{@ticket.id}" %>
+<div class="lead">
+  <p>DateTime: <%= @ticket.date.to_s(:long_ordinal) %></p>
+  <p>Type: <%= @ticket.type %></p>
+  <p>Price: <%= @ticket.price %></p>
+  <p>Visitor ID: <%= @ticket.visitor_id %></p>
+</div>

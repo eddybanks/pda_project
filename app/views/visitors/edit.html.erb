@@ -11,8 +11,7 @@
     </div>
     <div class="form-group">
       <label for="birthday">Birthday</label>
-      <%= f.text_field(:birthday, class: 'form-control') %>
-
+      <%= f.date_select(:birthday, start_year: 1950, class: 'form-control') %>
     </div>
     <div class="form-buttons">
       <%= submit_tag("Update", class: 'btn btn-primary') %>
