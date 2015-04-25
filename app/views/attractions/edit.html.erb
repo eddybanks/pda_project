@@ -15,7 +15,7 @@
     </div>
     <div class="form-group">
       <label for="park_number">Park Number</label>
-      <%= f.text_field(:park_number, class: 'form-control') %>
+      <%= f.select( :park_number,  Park.all.map {|u| [u.name+' (Address: '+u.address+' )',u.id]}, {:include_blank => "Select a Park"}, class: 'form-control') %>
     </div>
     <div class="form-buttons">
       <%= submit_tag("Update", class: 'btn btn-primary') %>

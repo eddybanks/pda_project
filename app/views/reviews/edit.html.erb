@@ -7,7 +7,7 @@
     </div>
     <div class="form-group">
       <label for="rating">Rating</label>
-      <%= f.text_field(:rating, class: 'form-control') %>
+      <%= f.text_field(:rating, class: 'form-control', :placeholder => "Rating from 1 to 10") %>
     </div>
     <div class="form-group">
       <label for="visitor_id">Visitor ID</label>
@@ -15,7 +15,7 @@
     </div>
     <div class="form-group">
       <label for="attraction_number">Attraction Number</label>
-      <%= f.text_field(:attraction_number, class: 'form-control') %>
+      <%= f.select( :attraction_number,  Attraction.all.map {|u| [u.name+' - '+(Park.find_by id: u.park_number).name,u.id]}, {:include_blank => "Select an Attraction (in 'Attraction - Park' format)"}, class: 'form-control') %>
     </div>
     <div class="form-buttons">
       <%= submit_tag("Update", class: 'btn btn-primary') %>

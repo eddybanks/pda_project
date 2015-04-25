@@ -14,20 +14,23 @@
             <th>Number</th>
             <th>Comment</th>
             <th>Rating</th>
-            <th>Visitor ID</th>
-            <th>Attraction Number</th>
+            <th>Visitor Name</th>
+            <th>Attraction Name - Park Name</th>
           </thead>
 
           <tbody>
 
             <% @reviews.each do |review| %>
+            <% @visitor = Visitor.find_by id: review.visitor_id %>
+            <% @attraction = Attraction.find_by id: review.attraction_number %>
+            <% @park = Park.find_by id: @attraction.park_number %>
             <tr>
               <td><input type="checkbox" class="checkthis" /></td>
               <td><%= review.id %></td>
               <td><%= review.comment %></td>
               <td><%= review.rating %></td>
-              <td><%= review.visitor_id %></td>
-              <td><%= review.attraction_number %></td>
+              <td><%= @visitor.name %></td>
+              <td><%= @attraction.name %> - <%= @park.name %></td>
               <td><p data-placement="top" data-toggle="tooltip" title="Show"><%= link_to raw('<span class="glyphicon glyphicon-open"></span>'), review_path(review), class: "btn btn-primary btn-xs" %></p></td>
               <td><p data-placement="top" data-toggle="tooltip" title="Edit"><%= link_to raw('<span class="glyphicon glyphicon-pencil"></span>'), edit_review_path(review), class: "btn btn-primary btn-xs" %></p></td>
               <td><p data-placement="top" data-toggle="tooltip" title="Delete"><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button></p></td>

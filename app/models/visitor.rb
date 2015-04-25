@@ -1,5 +1,8 @@
 class Visitor < ActiveRecord::Base
 
+	# has_many :transactions
+	# has_many :reviews
+
   self.table_name = "Visitors"
   self.primary_key = "ID"
   alias_attribute "id", "ID"

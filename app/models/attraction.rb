@@ -1,5 +1,9 @@
 class Attraction < ActiveRecord::Base
 
+	# belongs_to :park
+	# has_many :reviews
+	# has_and_belongs_to_many :transactions, join_table: :attractions_sell
+
   self.per_page = 10
   self.primary_key = "Number"
   self.table_name = "Attractions"
