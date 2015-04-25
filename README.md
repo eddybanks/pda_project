@@ -9,11 +9,9 @@ Move into the directory containing the sql script file and type "mysql -u userna
 Once in the mysql console, create a database using the commands 'create database pda_development' and 'use pda_development'.
 Then run "source ThemeParksDB.sql" to download the database entries.
 
-Next clone the rails pda_project app into a preferable directory, bundle install and load the database from schema.rb by typing in the following commands:
+Next clone the rails pda_project app into a preferable directory and bundle install by typing in the following commands:
 
 1. git clone https://github.com/eddybanks/pda_project.git
 2. bundle install
-3. rake db:schema:load
-4. rake db:migrate
-5. rails s
+3. rails s
 
