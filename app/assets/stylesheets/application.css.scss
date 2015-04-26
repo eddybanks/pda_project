@@ -66,16 +66,28 @@
  .table{
    & th{
      text-align: center;
-     & a.current{
-       padding-right: 20px;
-       background-repeat: no-repeat;
-       background-position: right center;
-       &.asc {
-         background-image: url('assets/up.png');
-       }
-       &.desc {
-      background-image: url('assets/down.png');
-      }
+     & .asc:after {
+     width: 0;
+     height: 0;
+     content: "";
+     border-left: 5px solid transparent;
+     border-right: 5px solid transparent;
+     border-top: 5px solid #333;
+     position: absolute;
+     margin-top: 7px;
+     margin-left: 5px;
+   }
+
+   & .desc:after {
+     width: 0;
+     height: 0;
+     content: "";
+     border-left: 5px solid transparent;
+     border-right: 5px solid transparent;
+     border-bottom: 5px solid #333;
+     position: absolute;
+     margin-top: 7px;
+     margin-left: 5px;
     }
   }
 }
