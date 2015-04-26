@@ -14,6 +14,11 @@
     <div class="cover-container">
       <%= render 'layouts/nav' %>
       <%= render 'layouts/header' %>
+      <% if !flash[:notice].blank? %>
+        <div class="notice">
+          <%= flash[:notice] %>
+        </div>
+      <% end %>
       <%= yield %>
       <%= render 'layouts/footer' %>
     </div>
