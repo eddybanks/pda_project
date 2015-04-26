@@ -1,7 +1,8 @@
 class TicketsController < ApplicationController
+  helper_method :sort_column, :sort_direction
 
   def index
-    @tickets = Ticket.all.paginate(:per_page => 8, :page => params[:page])
+    @tickets = Ticket.order(sort_column + " " + sort_direction).paginate(:per_page => 8, :page => params[:page])
   end
 
   def show
@@ -66,6 +67,14 @@ class TicketsController < ApplicationController
 
     def ticket_params
       params.require(:ticket).permit(:id, :date, :type, :price, :visitor_id, :attraction_numbers => [])
+    end
+
+    def sort_column
+      Ticket.column_names.include?(params[:sort]) ? params[:sort] : "Number"
+    end
+
+    def sort_direction
+      %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
     end
 
 end

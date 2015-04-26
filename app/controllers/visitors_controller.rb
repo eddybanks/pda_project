@@ -1,6 +1,8 @@
 class VisitorsController < ApplicationController
+  helper_method :sort_column, :sort_direction
+
   def index
-    @visitors = Visitor.all.paginate(:per_page => 8, :page => params[:page])
+    @visitors = Visitor.order(sort_column + " " + sort_direction).paginate(:per_page => 8, :page => params[:page])
   end
 
   def show
@@ -64,6 +66,14 @@ class VisitorsController < ApplicationController
 
     def visitor_params
       params.require(:visitor).permit(:id, :name, :gender, :birthday)
+    end
+
+    def sort_column
+      Visitor.column_names.include?(params[:sort]) ? params[:sort] : "ID"
+    end
+
+    def sort_direction
+      %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
     end
 
 end

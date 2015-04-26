@@ -1,7 +1,8 @@
 class AttractionsController < ApplicationController
+  helper_method :sort_column, :sort_direction
 
   def index
-    @attractions = Attraction.all.paginate(:per_page => 8, :page => params[:page])
+    @attractions = Attraction.order(sort_column + " " + sort_direction).paginate(:per_page => 8, :page => params[:page])
   end
 
   def show
@@ -55,5 +56,12 @@ class AttractionsController < ApplicationController
       params.require(:attraction).permit(:id, :name, :size, :category, :park_number, :transaction_number)
     end
 
+    def sort_column
+      Attraction.column_names.include?(params[:sort]) ? params[:sort] : "Number"
+    end
+
+    def sort_direction
+      %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
+    end
 
 end

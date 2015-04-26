@@ -1,7 +1,8 @@
 class ReviewsController < ApplicationController
+  helper_method :sort_column, :sort_direction
 
   def index
-    @reviews = Review.all.paginate(:per_page => 4, :page => params[:page])
+    @reviews = Review.order(sort_column + " " + sort_direction).paginate(:per_page => 4, :page => params[:page])
   end
 
   def show
@@ -51,6 +52,14 @@ class ReviewsController < ApplicationController
 
     def review_params
       params.require(:review).permit(:id, :name, :comment, :rating, :visitor_id, :attraction_number)
+    end
+
+    def sort_column
+      Review.column_names.include?(params[:sort]) ? params[:sort] : "Number"
+    end
+
+    def sort_direction
+      %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
     end
 
 end

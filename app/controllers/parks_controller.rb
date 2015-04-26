@@ -55,12 +55,12 @@ class ParksController < ApplicationController
       params.require(:park).permit(:id, :name, :size, :address)
     end
 
-  def sort_column
-    Park.column_names.include?(params[:sort]) ? params[:sort] : "number"
-  end
+    def sort_column
+      Park.column_names.include?(params[:sort]) ? params[:sort] : "Number"
+    end
 
-  def sort_direction
-    %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
-  end
+    def sort_direction
+      %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
+    end
 
 end
