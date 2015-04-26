@@ -1,7 +1,8 @@
 class ParksController < ApplicationController
+  helper_method :sort_column, :sort_direction
 
   def index
-    @parks = Park.all.paginate(:per_page => 8, :page => params[:page])
+    @parks = Park.order(sort_column + " " + sort_direction).paginate(:per_page => 8, :page => params[:page])
   end
 
   def show
@@ -53,5 +54,13 @@ class ParksController < ApplicationController
     def park_params
       params.require(:park).permit(:id, :name, :size, :address)
     end
+
+  def sort_column
+    Park.column_names.include?(params[:sort]) ? params[:sort] : "number"
+  end
+
+  def sort_direction
+    %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
+  end
 
 end

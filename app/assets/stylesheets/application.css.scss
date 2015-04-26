@@ -66,8 +66,19 @@
  .table{
    & th{
      text-align: center;
-   }
- }
+     & a.current{
+       padding-right: 20px;
+       background-repeat: no-repeat;
+       background-position: right center;
+       &.asc {
+         background-image: url('assets/up.png');
+       }
+       &.desc {
+      background-image: url('assets/down.png');
+      }
+    }
+  }
+}
  /* Padding for spacing */
  .inner {
    padding: 30px;
