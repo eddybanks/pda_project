@@ -2,7 +2,13 @@
 <div class="panel-body">
   <div class="row">
     <div class="col-md-12">
-      <%= render 'layouts/search' %>
+
+      <%= form_tag url_for(:controller => :reviews, :action => :index) , method: :get do %>
+          <%= text_field :search, params[:search], :placeholder => "Search for Reviews", :class => "form-control smaller-box" %>
+          <%= submit_tag "Search", name: nil, :class => "btn btn-primary new-submit-btn" %>
+      <% end %>
+      <div class="clear"></div>
+
       <h2><%= link_to 'Add New Tuple', new_review_path, class: "btn btn-primary" %></h2>
       <div id="reviewstable" class="table-responsive">
 

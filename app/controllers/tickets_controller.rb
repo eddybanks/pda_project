@@ -2,7 +2,11 @@ class TicketsController < ApplicationController
   helper_method :sort_column, :sort_direction
 
   def index
-    @tickets = Ticket.order(sort_column + " " + sort_direction).paginate(:per_page => 8, :page => params[:page])
+    if params[:search].nil?
+      @tickets = Ticket.order(sort_column + " " + sort_direction).paginate(:per_page => 8, :page => params[:page])
+    else
+      @tickets = Ticket.search(params[:search], :per_page => 8, :page => params[:page])
+    end
   end
 
   def show

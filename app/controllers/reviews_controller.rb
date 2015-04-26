@@ -2,7 +2,11 @@ class ReviewsController < ApplicationController
   helper_method :sort_column, :sort_direction
 
   def index
-    @reviews = Review.order(sort_column + " " + sort_direction).paginate(:per_page => 4, :page => params[:page])
+    if params[:search].nil?
+      @reviews = Review.order(sort_column + " " + sort_direction).paginate(:per_page => 4, :page => params[:page])
+    else
+      @reviews = Review.search(params[:search], :per_page => 4, :page => params[:page])
+    end
   end
 
   def show

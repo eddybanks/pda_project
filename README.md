@@ -15,3 +15,5 @@ Next clone the rails pda_project app into a preferable directory and bundle inst
 2. bundle install
 3. rails s
 
+
+For the search feature inside the app to work, you need to have Sphinx installed in your machine. We use Thinking Sphinx Rails Gem to do the work but it uses Sphinx search engine so installation is needed by following this link (http://pat.github.io/thinking-sphinx/installing_sphinx.html).

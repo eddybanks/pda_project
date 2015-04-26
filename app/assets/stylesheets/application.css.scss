@@ -27,6 +27,24 @@
    border: 1px solid #fff;
  }
 
+ .smaller-box {
+    width: 30%;
+    margin: 0 auto 0 35%;
+    float: left;
+ }
+
+ .new-submit-btn {
+    float: right;
+    margin: 0 25% 0 0;
+ }
+
+ .clear {
+    clear: both;
+ }
+
+ .container-fluid {
+    margin-top: 1%;
+ }
 
  /*
   * Base structure

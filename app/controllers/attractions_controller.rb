@@ -2,7 +2,11 @@ class AttractionsController < ApplicationController
   helper_method :sort_column, :sort_direction
 
   def index
-    @attractions = Attraction.order(sort_column + " " + sort_direction).paginate(:per_page => 8, :page => params[:page])
+    if params[:search].nil?
+      @attractions = Attraction.order(sort_column + " " + sort_direction).paginate(:per_page => 8, :page => params[:page])
+    else
+      @attractions = Attraction.search(params[:search], :per_page => 8, :page => params[:page])
+    end
   end
 
   def show
