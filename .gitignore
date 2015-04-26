@@ -17,4 +17,4 @@
 /tmp
 /config/database.yml
 /db/*
-/development.sphinx.conf
+/config/development.sphinx.conf
