@@ -19,10 +19,10 @@
     </div>
     <div class="form-group">
       <%= f.label :attraction_number %>
-      <% for attraction in Attraction.all %>
+      <% for park in Park.all %>
         <div class="check_boxes">
-          <%= check_box_tag "ticket[attraction_numbers][]", attraction.id, @ticket.attractions.include?(attraction) %>
-          <%= attraction.name %>
+          <%= check_box_tag "ticket[attraction_numbers][]", park.id, @ticket.parks.include?(park) %>
+          <%= park.name %>
         </div>
       <% end %>
     </div>

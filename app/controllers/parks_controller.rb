@@ -4,8 +4,9 @@ class ParksController < ApplicationController
   def index
     if params[:search].nil?
       @parks = Park.order(sort_column + " " + sort_direction).paginate(:per_page => 8, :page => params[:page])
-    else
+    elsif params[:search].present?
       @parks = Park.search(params[:search], :per_page => 8, :page => params[:page])
+      @count = Park.search_count params[:search]
     end
   end
 

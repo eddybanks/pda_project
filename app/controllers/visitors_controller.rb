@@ -6,6 +6,7 @@ class VisitorsController < ApplicationController
       @visitors = Visitor.order(sort_column + " " + sort_direction).paginate(:per_page => 8, :page => params[:page])
     else
       @visitors = Visitor.search(params[:search], :per_page => 8, :page => params[:page])
+      @count = Visitor.search_count params[:search]
     end
   end
 

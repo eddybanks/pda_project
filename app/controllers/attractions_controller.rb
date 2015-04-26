@@ -6,6 +6,7 @@ class AttractionsController < ApplicationController
       @attractions = Attraction.order(sort_column + " " + sort_direction).paginate(:per_page => 8, :page => params[:page])
     else
       @attractions = Attraction.search(params[:search], :per_page => 8, :page => params[:page])
+      @count = Attraction.search_count params[:search]
     end
   end
 

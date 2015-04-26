@@ -4,10 +4,12 @@
     <div class="col-md-12">
       
       <%= form_tag url_for(:controller => :parks, :action => :index) , method: :get do %>
-          <%= text_field :search, params[:search], :placeholder => "Search for Parks", :class => "form-control smaller-box" %>
-          <%= submit_tag "Search", name: nil, :class => "btn btn-primary new-submit-btn" %>
+          <%= text_field :search, params[:search], :placeholder => "Search for Parks", :class => "form-control smaller-box", :id => "search_box" %>
+          <%= submit_tag "Search", name: nil, :class => "btn btn-primary new-submit-btn", :id => "submit_btn" %>
       <% end %>
       <div class="clear"></div>
+
+      <p><%= @count.nil? ? '' : "Search results: #{@count}" %></p>
 
       <h2><%= link_to 'Add New Tuple', new_park_path, class: "btn btn-primary" %></h2>
       <div id="parktable" class="table-responsive">
@@ -46,3 +48,15 @@
     </div>
   </div>
 </div>
+
+<script type="text/javascript">
+  if($('#search_box').val() ==  "") 
+    $('#submit_btn').attr('disabled', true);
+
+  $('#search_box').keyup(function(){
+    if($('#search_box').val() !=  "") 
+      $('#submit_btn').attr('disabled', false);    
+    else
+      $('#submit_btn').attr('disabled', true);   
+  });
+</script>

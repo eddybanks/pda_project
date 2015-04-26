@@ -6,6 +6,7 @@ class TicketsController < ApplicationController
       @tickets = Ticket.order(sort_column + " " + sort_direction).paginate(:per_page => 8, :page => params[:page])
     else
       @tickets = Ticket.search(params[:search], :per_page => 8, :page => params[:page])
+      @count = Ticket.search_count params[:search]
     end
   end
 

@@ -6,6 +6,7 @@ class ReviewsController < ApplicationController
       @reviews = Review.order(sort_column + " " + sort_direction).paginate(:per_page => 4, :page => params[:page])
     else
       @reviews = Review.search(params[:search], :per_page => 4, :page => params[:page])
+      @count = Review.search_count params[:search]
     end
   end
 
