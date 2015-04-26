@@ -5,8 +5,8 @@
 
     <%= form_tag url_for(:controller => :visitors, :action => :index) , method: :get do %>
           <%= text_field :search, params[:search], :placeholder => "Search for Visitors", :class => "form-control smaller-box", :id => "search_box" %>
-          <%= select(:order, :order, ["id", "name", "gender", "birthday"], {:include_blank => "Select Order"}, :id => "search_box", class: 'form-control smaller-box1') %>
-          <%= select(:asc, :asc, ["asc", "desc"], {:include_blank => "Select Direction"}, :id => "search_box", class: 'form-control smaller-box2') %>
+          <%= select(:order, :order, [["Visitor ID", "id"], ["Visitor Name", "name"], ["Gender", "gender"], ["Birthday", "birthday"]], {:include_blank => "Select Order"}, :id => "search_box", class: 'form-control smaller-box1') %>
+          <%= select(:asc, :asc, [["Ascending", "asc"], ["Descending", "desc"]], {:include_blank => "Select Direction"}, :id => "search_box", class: 'form-control smaller-box2') %>
           <%= submit_tag "Search", name: nil, :class => "btn btn-primary new-submit-btn", :id => "submit_btn" %>
       <% end %>
       <div class="clear"></div>

@@ -12,7 +12,7 @@ class ReviewsController < ApplicationController
       conditions[:order] = 'comment desc' if params[:order].present? && params[:order][:order] == "comment" && params[:asc][:asc] == "desc"
       conditions[:order] = :rating if params[:order].present? && params[:order][:order] == "rating"
       conditions[:order] = 'rating desc' if params[:order].present? && params[:order][:order] == "rating" && params[:asc][:asc] == "desc"
-      conditions[:per_page] = 8
+      conditions[:per_page] = 4
       conditions[:page] = params[:page]
       @reviews = Review.search(params[:search], conditions)
       @count = Review.search_count params[:search]
