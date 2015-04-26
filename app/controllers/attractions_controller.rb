@@ -21,7 +21,7 @@ class AttractionsController < ApplicationController
     @attraction = Attraction.new(attraction_params)
 
     if @attraction.save
-      flash[:notice] = "Attraction created successfully!"
+      flash[:notice] = "Attraction '#{@attraction.name}' created successfully!"
       redirect_to(:action => 'index')
     else
       render('new')

@@ -21,7 +21,7 @@ class ParksController < ApplicationController
     @park = Park.new(park_params)
 
     if @park.save
-      flash[:notice] = "Park created successfully!"
+      flash[:notice] = "Park '#{@park.name}' created successfully!"
       redirect_to(:action => 'index')
     else
       render('new')
