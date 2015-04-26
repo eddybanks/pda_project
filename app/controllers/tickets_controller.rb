@@ -39,7 +39,8 @@ class TicketsController < ApplicationController
 
   def update
 
-    params[:ticket][:attraction_numbers] ||= []
+    @ticket = Ticket.find_by_id(params[:id])
+    # params[:ticket][:attraction_numbers] ||= []
 
     # To replace date_select (i1,i2, ..) values to Date
     ticket = params[:ticket]
@@ -70,7 +71,8 @@ class TicketsController < ApplicationController
   private
 
     def ticket_params
-      params.require(:ticket).permit(:id, :date, :type, :price, :visitor_id, :attraction_numbers => [])
+      params.require(:ticket).permit(:id, :date, :type, :price, :visitor_id)
+      # params.require(:ticket).permit(:id, :date, :type, :price, :visitor_id, :attraction_numbers => [])
     end
 
     def sort_column

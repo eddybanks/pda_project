@@ -7,7 +7,7 @@
     </div>
     <div class="form-group">
       <label for="rating">Rating</label>
-      <%= f.text_field(:rating, class: 'form-control', :placeholder => "Rating from 1 to 10") %>
+      <%= f.select(:rating, [1,2,3,4,5,6,7,8,9,10], {:include_blank => "Select a Rating"}, class: 'form-control') %>
     </div>
     <div class="form-group">
       <label for="visitor_id">Visitor ID</label>
