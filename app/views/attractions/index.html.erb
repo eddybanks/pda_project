@@ -11,7 +11,7 @@
       <% end %>
       <div class="clear"></div>
 
-      <p><%= @count.nil? ? '' : "Search results: #{@count}" %></p>
+      <p id="count_text"><%= @count.nil? ? '' : "Search results: #{@count}" %></p>
 
       <h2><%= link_to 'Add New Tuple', new_attraction_path, class: "btn btn-primary" %></h2>
       <div id="attractiontable" class="table-responsive">
@@ -56,10 +56,15 @@
 </div>
 
 <script type="text/javascript">
-  if($('#search_box').val() ==  "") 
+  if($('#search_box').val() ==  "") {
     $('#submit_btn').attr('disabled', true);
-
-  $('#search_box').bind("keydown change", function(){
+    if(window.location.href === 'http://localhost:3000/attractions?2')
+      $('#search_box').focus();
+  }
+  $('#search_box').bind("keydown change click", function(){
+    if ($("#count_text:contains('results')").length > 0){
+      location.replace('http://localhost:3000/attractions?2');
+    }
     if($('#search_box').val() !=  "") 
       $('#submit_btn').attr('disabled', false);    
     else
