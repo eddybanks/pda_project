@@ -5,6 +5,8 @@
 
       <%= form_tag url_for(:controller => :reviews, :action => :index) , method: :get do %>
           <%= text_field :search, params[:search], :placeholder => "Search for Reviews", :class => "form-control smaller-box", :id => "search_box" %>
+          <%= select(:order, :order, ["id", "comment", "rating"], {:include_blank => "Select Order"}, :id => "search_box", class: 'form-control smaller-box1') %>
+          <%= select(:asc, :asc, ["asc", "desc"], {:include_blank => "Select Direction"}, :id => "search_box", class: 'form-control smaller-box2') %>
           <%= submit_tag "Search", name: nil, :class => "btn btn-primary new-submit-btn", :id => "submit_btn" %>
       <% end %>
       <div class="clear"></div>
@@ -58,7 +60,7 @@
   if($('#search_box').val() ==  "") 
     $('#submit_btn').attr('disabled', true);
 
-  $('#search_box').keyup(function(){
+  $('#search_box').bind("keydown change", function(){
     if($('#search_box').val() !=  "") 
       $('#submit_btn').attr('disabled', false);    
     else

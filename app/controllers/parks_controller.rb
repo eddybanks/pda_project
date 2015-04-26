@@ -4,8 +4,19 @@ class ParksController < ApplicationController
   def index
     if params[:search].nil?
       @parks = Park.order(sort_column + " " + sort_direction).paginate(:per_page => 8, :page => params[:page])
-    elsif params[:search].present?
-      @parks = Park.search(params[:search], :per_page => 8, :page => params[:page])
+    else
+      conditions = {}
+      conditions[:order] = :id if params[:order].present? && params[:order][:order] == "id"
+      conditions[:order] = 'id desc' if params[:order].present? && params[:order][:order] == "id" && params[:asc][:asc] == "desc"
+      conditions[:order] = :address if params[:order].present? && params[:order][:order] == "address"
+      conditions[:order] = 'address desc' if params[:order].present? && params[:order][:order] == "address" && params[:asc][:asc] == "desc"
+      conditions[:order] = :size if params[:order].present? && params[:order][:order] == "size"
+      conditions[:order] = 'size desc' if params[:order].present? && params[:order][:order] == "size" && params[:asc][:asc] == "desc"
+      conditions[:order] = :name if params[:order].present? && params[:order][:order] == "name"
+      conditions[:order] = 'name desc' if params[:order].present? && params[:order][:order] == "name" && params[:asc][:asc] == "desc"
+      conditions[:per_page] = 8
+      conditions[:page] = params[:page]
+      @parks = Park.search(params[:search], conditions)
       @count = Park.search_count params[:search]
     end
   end

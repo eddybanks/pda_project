@@ -5,7 +5,16 @@ class ReviewsController < ApplicationController
     if params[:search].nil?
       @reviews = Review.order(sort_column + " " + sort_direction).paginate(:per_page => 4, :page => params[:page])
     else
-      @reviews = Review.search(params[:search], :per_page => 4, :page => params[:page])
+      conditions = {}
+      conditions[:order] = :id if params[:order].present? && params[:order][:order] == "id"
+      conditions[:order] = 'id desc' if params[:order].present? && params[:order][:order] == "id" && params[:asc][:asc] == "desc"
+      conditions[:order] = :comment if params[:order].present? && params[:order][:order] == "comment"
+      conditions[:order] = 'comment desc' if params[:order].present? && params[:order][:order] == "comment" && params[:asc][:asc] == "desc"
+      conditions[:order] = :rating if params[:order].present? && params[:order][:order] == "rating"
+      conditions[:order] = 'rating desc' if params[:order].present? && params[:order][:order] == "rating" && params[:asc][:asc] == "desc"
+      conditions[:per_page] = 8
+      conditions[:page] = params[:page]
+      @reviews = Review.search(params[:search], conditions)
       @count = Review.search_count params[:search]
     end
   end

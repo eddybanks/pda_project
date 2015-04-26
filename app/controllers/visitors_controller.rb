@@ -5,7 +5,18 @@ class VisitorsController < ApplicationController
     if params[:search].nil?
       @visitors = Visitor.order(sort_column + " " + sort_direction).paginate(:per_page => 8, :page => params[:page])
     else
-      @visitors = Visitor.search(params[:search], :per_page => 8, :page => params[:page])
+      conditions = {}
+      conditions[:order] = :id if params[:order].present? && params[:order][:order] == "id"
+      conditions[:order] = 'id desc' if params[:order].present? && params[:order][:order] == "id" && params[:asc][:asc] == "desc"
+      conditions[:order] = :name if params[:order].present? && params[:order][:order] == "name"
+      conditions[:order] = 'name desc' if params[:order].present? && params[:order][:order] == "name" && params[:asc][:asc] == "desc"
+      conditions[:order] = :gender if params[:order].present? && params[:order][:order] == "gender"
+      conditions[:order] = 'gender desc' if params[:order].present? && params[:order][:order] == "gender" && params[:asc][:asc] == "desc"
+      conditions[:order] = :birthday if params[:order].present? && params[:order][:order] == "birthday"
+      conditions[:order] = 'birthday desc' if params[:order].present? && params[:order][:order] == "birthday" && params[:asc][:asc] == "desc"
+      conditions[:per_page] = 8
+      conditions[:page] = params[:page]
+      @visitors = Visitor.search(params[:search], conditions)
       @count = Visitor.search_count params[:search]
     end
   end

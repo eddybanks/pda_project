@@ -5,7 +5,18 @@ class AttractionsController < ApplicationController
     if params[:search].nil?
       @attractions = Attraction.order(sort_column + " " + sort_direction).paginate(:per_page => 8, :page => params[:page])
     else
-      @attractions = Attraction.search(params[:search], :per_page => 8, :page => params[:page])
+      conditions = {}
+      conditions[:order] = :id if params[:order].present? && params[:order][:order] == "id"
+      conditions[:order] = 'id desc' if params[:order].present? && params[:order][:order] == "id" && params[:asc][:asc] == "desc"
+      conditions[:order] = :type if params[:order].present? && params[:order][:order] == "type"
+      conditions[:order] = 'type desc' if params[:order].present? && params[:order][:order] == "type" && params[:asc][:asc] == "desc"
+      conditions[:order] = :size if params[:order].present? && params[:order][:order] == "size"
+      conditions[:order] = 'size desc' if params[:order].present? && params[:order][:order] == "size" && params[:asc][:asc] == "desc"
+      conditions[:order] = :name if params[:order].present? && params[:order][:order] == "name"
+      conditions[:order] = 'name desc' if params[:order].present? && params[:order][:order] == "name" && params[:asc][:asc] == "desc"
+      conditions[:per_page] = 8
+      conditions[:page] = params[:page]
+      @attractions = Attraction.search(params[:search], conditions)
       @count = Attraction.search_count params[:search]
     end
   end

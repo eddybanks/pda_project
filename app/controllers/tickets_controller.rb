@@ -5,7 +5,18 @@ class TicketsController < ApplicationController
     if params[:search].nil?
       @tickets = Ticket.order(sort_column + " " + sort_direction).paginate(:per_page => 8, :page => params[:page])
     else
-      @tickets = Ticket.search(params[:search], :per_page => 8, :page => params[:page])
+      conditions = {}
+      conditions[:order] = :id if params[:order].present? && params[:order][:order] == "id"
+      conditions[:order] = 'id desc' if params[:order].present? && params[:order][:order] == "id" && params[:asc][:asc] == "desc"
+      conditions[:order] = :date if params[:order].present? && params[:order][:order] == "date"
+      conditions[:order] = 'date desc' if params[:order].present? && params[:order][:order] == "date" && params[:asc][:asc] == "desc"
+      conditions[:order] = :type if params[:order].present? && params[:order][:order] == "type"
+      conditions[:order] = 'type desc' if params[:order].present? && params[:order][:order] == "type" && params[:asc][:asc] == "desc"
+      conditions[:order] = :price if params[:order].present? && params[:order][:order] == "price"
+      conditions[:order] = 'price desc' if params[:order].present? && params[:order][:order] == "price" && params[:asc][:asc] == "desc"
+      conditions[:per_page] = 8
+      conditions[:page] = params[:page]
+      @tickets = Ticket.search(params[:search], conditions)
       @count = Ticket.search_count params[:search]
     end
   end
