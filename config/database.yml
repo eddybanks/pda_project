@@ -1,9 +1,9 @@
 development:                            #setting the database for the development environment
   adapter: mysql2
   encoding: utf8
-  database: pda_development             # the name of the mysql database
+  database: wisamquais
   pool: 5
-  username: root                        # username for the mysql database
-  password: '1234'                      # password for database access in mysql
+  username: wisamquais
+  password:
   timeout: 5000
-  socket: /var/run/mysqld/mysqld.sock   # mysql socket configuration for ubuntu
+  # socket: /var/run/mysqld/mysqld.sock
