@@ -17,15 +17,6 @@
       <label for="visitor_id">Visitor ID</label>
       <%= f.text_field(:visitor_id, class: 'form-control') %>
     </div>
-    <div class="form-group">
-      <%= f.label :attraction_number %>
-      <% for park in Park.all %>
-        <div class="check_boxes">
-          <%= check_box_tag "ticket[attraction_numbers][]", park.id, @ticket.parks.include?(park) %>
-          <%= park.name %>
-        </div>
-      <% end %>
-    </div>
   
     <div class="form-buttons">
       <%= submit_tag("Add", class: 'btn btn-primary') %>
